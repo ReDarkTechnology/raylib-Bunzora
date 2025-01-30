@@ -966,8 +966,6 @@ void EndDrawing(void)
 
         CORE.Time.frame += waitTime;    // Total frame time: update + draw + wait
     }
-
-    PollInputEvents();      // Poll user events (before next frame update)
 #endif
 
 #if defined(SUPPORT_SCREEN_CAPTURE)
