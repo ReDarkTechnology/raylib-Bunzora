@@ -703,13 +703,8 @@ void *GetWindowHandle(void)
     // NOTE: Returned handle is: void *HWND (windows.h)
     return glfwGetWin32Window(platform.handle);
 #endif
-#if defined(__linux__)
-    // NOTE: Returned handle is: unsigned long Window (X.h)
-    // typedef unsigned long XID;
-    // typedef XID Window;
-    //unsigned long id = (unsigned long)glfwGetX11Window(platform.handle);
-    //return NULL;    // TODO: Find a way to return value... cast to void *?
-    return (void *)platform.handle;
+#if defined(__linux__)// NOTE: Returned handle is: unsigned long Window (X.h)
+    return (void *)(uintptr_t)glfwGetX11Display();
 #endif
 #if defined(__APPLE__)
     // NOTE: Returned handle is: (objc_object *)
@@ -1174,6 +1169,7 @@ void PollInputEvents(void)
         if (glfwJoystickPresent(i)) CORE.Input.Gamepad.ready[i] = true;
         else CORE.Input.Gamepad.ready[i] = false;
     }
+
 
     // Register gamepads buttons events
     for (int i = 0; i < MAX_GAMEPADS; i++)

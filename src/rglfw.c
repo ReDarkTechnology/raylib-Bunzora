@@ -26,7 +26,7 @@
 *
 **********************************************************************************************/
 
-//#define _GLFW_BUILD_DLL           // To build shared version
+#define _GLFW_BUILD_DLL           // To build shared version
 // Ref: http://www.glfw.org/docs/latest/compile.html#compile_manual
 
 // Platform options:

@@ -352,6 +352,10 @@ typedef struct CoreData {
 
         } Touch;
         struct {
+            Vector2 position;
+            float pressure;
+        } PenTablet;
+        struct {
             int lastButtonPressed;          // Register last gamepad button pressed
             int axisCount[MAX_GAMEPADS];    // Register number of available gamepad axis
             bool ready[MAX_GAMEPADS];       // Flag to know if gamepad is ready
